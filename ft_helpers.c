@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uintflag.c                                      :+:      :+:    :+:   */
+/*   ft_helpers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wbertoni <wbertoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/04 12:33:44 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/03/05 11:44:20 by wbertoni         ###   ########.fr       */
+/*   Created: 2020/03/13 16:45:52 by wbertoni          #+#    #+#             */
+/*   Updated: 2020/03/13 17:49:50 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_putnbrhex(uintmax_t n,int flag)
+void			ft_putchar(char c)
 {
-	if (n >= 16)
-		ft_putnbrhex(n / 16, flag);
-	if ((n % 16) >= 10)
-		ft_putchar(((n % 16) - 10) + ((flag == 'x') ? 'a' : 'A'));
-	else
-		ft_putchar((n % 16) + '0');
+	write(1, &c, 1);
+	g_counter++;
 }
 
-void		ft_uintflag(char flag, va_list *args)
+void			ft_putstr(char *str)
 {
-	unsigned int n;
+	int i;
 
-	n = va_arg(*args, unsigned int);
-	if (flag == 'u')
-		ft_putnbr(n);
-	if (flag == 'x')
-		ft_putnbrhex(n, flag);
-	if (flag == 'X')
-		ft_putnbrhex(n, flag);
+	i= 0;
+	if (!str)
+		return;
+	while(str[i] != '\0')
+		ft_putchar(str[i++]);
+}
+
+char			*ft_strupper(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		str[i] = ft_toupper(str[i]);
+		i++;
+	}
+	return (str);
 }
