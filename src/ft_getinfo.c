@@ -6,7 +6,7 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 12:00:47 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/04/09 14:24:17 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/04/21 13:39:59 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,6 @@ static void		ft_create_value(t_printf *elem, char *str, va_list *args, int i)
 		update_value(elem, ft_strdup(""));
 	}
 }
-
-/*
-** Function: ft_getinfo
-** ---------------------
-**
-** Description: Gets the information after '%' in the string. Get the flag,
-** width and precision and update the structure with those information.
-**
-** str : the position of the '%' to be read
-** elem: th structure to be updated
-** args: the args from the variadic function
-**
-** Return: the size from the '%' until the spec(d,i,u,p,s,c,x,X).
-** If doesn´t have a spec it will return 'y'
-*/
 
 int				ft_getinfo(char *str, t_printf *elem, va_list *args)
 {
