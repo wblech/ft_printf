@@ -26,7 +26,7 @@ make
 ```
 To ```compile``` with your main in local folder:
 ```
-gcc -I. -I./libft -L. -L./libft -lft -lftprintf  main.c -o main
+gcc -Wall -Wextra -Werror -L. -lftprintf  main.c -o main
 ```
 ### Example of Usage
 ```

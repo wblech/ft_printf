@@ -19,18 +19,19 @@ AR = ar -rc
 RM = rm -f
 LIBFT = $(DIR_LIBFT)/libft.a
 
-all:	$(NAME) $(LIBFT)
+all:	$(NAME)
 
 $(DIR_OBJ)/%.o:	$(DIR_SRC)/%.c
 				mkdir -p $(DIR_OBJ)
 				$(CC) $(CFLAGS) -I. -I$(DIR_LIBFT) -c $< -o $@
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 				$(AR) $(NAME) $(OBJ)
 				ranlib $(NAME)
 
 $(LIBFT):
 				$(MAKE) -C $(DIR_LIBFT)
+				mv $(LIBFT) $(NAME)
 
 clean:
 			$(MAKE) -C $(DIR_LIBFT) clean
