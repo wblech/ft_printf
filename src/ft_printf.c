@@ -6,18 +6,18 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 20:11:44 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/04/09 14:31:46 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/04/21 13:08:11 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-unsigned int	ft_getnumber(t_printf *elem, char *str, va_list *args,
-int isprecision)
+unsigned int ft_getnumber(t_printf *elem, char *str, va_list *args,
+						  int isprecision)
 {
-	int		size;
-	int		nbr;
-	char	*new;
+	int size;
+	int nbr;
+	char *new;
 
 	size = 0;
 	if (str[size] == '*')
@@ -39,7 +39,7 @@ int isprecision)
 	return (nbr);
 }
 
-unsigned int	ft_getnbrsize(unsigned int nbr)
+unsigned int ft_getnbrsize(unsigned int nbr)
 {
 	unsigned int i;
 
@@ -51,15 +51,14 @@ unsigned int	ft_getnbrsize(unsigned int nbr)
 	return (i);
 }
 
-static void		ft_polish(t_printf *elem)
+static void ft_polish(t_printf *elem)
 {
 	if (elem->size_precision >= 0)
 	{
 		if (elem->type_char == 'p')
 			update_option(elem, size_value, (int)ft_strlen(elem->value) - 2);
 		else
-			update_option(elem, size_value, (int)ft_strlen(elem->value) +
-			elem->isneg);
+			update_option(elem, size_value, (int)ft_strlen(elem->value) + elem->isneg);
 		update_value(elem, ft_precision(elem));
 	}
 	if (elem->width > 0)
@@ -69,16 +68,15 @@ static void		ft_polish(t_printf *elem)
 	}
 	if (elem->size_precision < 0 && elem->flag == '0')
 	{
-		update_option(elem, size_value, (int)ft_strlen(elem->value) +
-		elem->isneg);
+		update_option(elem, size_value, (int)ft_strlen(elem->value) + elem->isneg);
 		update_value(elem, ft_zeroflag(elem));
 	}
 }
 
-int				ft_print_percent_rule(char *str, va_list *args)
+int ft_print_percent_rule(char *str, va_list *args)
 {
-	t_printf	*elem;
-	int			i;
+	t_printf *elem;
+	int i;
 
 	i = 0;
 	elem = create_printf();
@@ -93,11 +91,11 @@ int				ft_print_percent_rule(char *str, va_list *args)
 	return (i);
 }
 
-int				ft_printf(const char *str, ...)
+int ft_printf(const char *str, ...)
 {
-	int		i;
+	int i;
 	va_list args;
-	int		counter;
+	int counter;
 
 	i = 0;
 	va_start(args, str);
